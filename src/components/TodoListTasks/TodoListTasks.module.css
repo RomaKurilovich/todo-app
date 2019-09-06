@@ -1,0 +1,15 @@
+.todoListTasks{
+    margin-left:7px;
+    margin-right:7px;
+    margin-top:20px;
+    margin-bottom:5px;
+    padding: 3px;
+    color: green;
+    height:160px ;
+    background: #0C0C0C;
+    overflow: auto;
+    overflow-x: hidden;
+    border: solid 1px green;
+    font-size: 16px;
+    
+}
