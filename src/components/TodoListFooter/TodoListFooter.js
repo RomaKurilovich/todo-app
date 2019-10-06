@@ -26,11 +26,9 @@ class TodoListFooter extends React.Component {
 
 
         return (<div>
-
             <div className={style.footerButton}>
                 {buttons}
             </div>
-
             <div className={style.status}>
                 <span>Status: </span>
 

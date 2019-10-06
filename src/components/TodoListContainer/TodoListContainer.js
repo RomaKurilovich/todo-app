@@ -60,7 +60,6 @@ let mapDispatchToProps = (dispatch) => ({
     updateTaskTitle: (widgetId, taskId, title) => {
         dispatch(updateTaskTitleThunkCreator(widgetId, taskId, title))
     },
-
     addTask: (widgetId, taskTitle) => {
        dispatch(addTaskThunkCreator(widgetId, taskTitle))
     },
