@@ -12,23 +12,22 @@ import {
 import { getFilteredTasks } from '../../redux/selectors';
 
 class TodoListContainer extends React.Component {
-    widgetId = 1234;
 
     componentDidMount() {
-        this.props.fetchTasks(this.widgetId);
+        this.props.fetchTasks();
     }
 
     addTask = (taskTitle) => {
-        this.props.addTask(this.widgetId, taskTitle);
+        this.props.addTask(taskTitle);
     };
     onTaskStatusChanged = (taskId, isDone) => {
-        this.props.updateTaskStatus(this.widgetId, taskId, isDone)
+        this.props.updateTaskStatus(taskId, isDone)
     };
     onTaskTitleChanged = (taskId, title) => {
-        this.props.updateTaskTitle(this.widgetId, taskId, title)
+        this.props.updateTaskTitle(taskId, title)
     };
     onTaskDeleted = (taskId) => {
-        this.props.deleteTask(this.widgetId, taskId)
+        this.props.deleteTask(taskId)
     };
 
     render = () => {
@@ -51,20 +50,21 @@ let mapStateToProps = (state) => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-    fetchTasks: (widgetId) => {
-        dispatch(fetchTasksThunkCreator(widgetId));
+    fetchTasks: () => {
+        dispatch(fetchTasksThunkCreator());
     },
-    updateTaskStatus: (widgetId, taskId, isDone) => {
-        dispatch(updateTaskStatusThunkCreator(widgetId, taskId, isDone))
+    updateTaskStatus: (taskId, isDone) => {
+        dispatch(updateTaskStatusThunkCreator(taskId, isDone))
     },
-    updateTaskTitle: (widgetId, taskId, title) => {
-        dispatch(updateTaskTitleThunkCreator(widgetId, taskId, title))
+    updateTaskTitle: (taskId, title) => {
+        dispatch(updateTaskTitleThunkCreator(taskId, title))
     },
-    addTask: (widgetId, taskTitle) => {
-       dispatch(addTaskThunkCreator(widgetId, taskTitle))
+
+    addTask: (taskTitle) => {
+       dispatch(addTaskThunkCreator(taskTitle))
     },
-    deleteTask: (widgetId, taskId) => {
-        dispatch(deleteTaskThunkCreator(widgetId, taskId))
+    deleteTask: (taskId) => {
+        dispatch(deleteTaskThunkCreator(taskId))
     },
     changeFilter: (value) =>{
         dispatch(changeFilter(value))

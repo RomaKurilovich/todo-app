@@ -6,10 +6,14 @@ class TodoListHeader extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = { title: '' }
+
+
         this.onTitleChange = (e) => {
             this.setState({ title: e.currentTarget.value });
         };
+
         this.onAddTask = () => {
             if (this.state.title.length > 0) {
                 this.props.addTask(this.state.title);
@@ -26,8 +30,11 @@ class TodoListHeader extends React.Component {
     render = () => {
         return (
             <div className={style.todoListHeader}>
+
                 <h3>My tasks</h3>
+
                 <div className={style.todoListNewTaskForm}>
+
                     <input type="text"
                         value={this.state.title}
                         ref={this.newTaskInputRef}

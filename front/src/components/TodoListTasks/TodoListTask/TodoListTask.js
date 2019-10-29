@@ -4,7 +4,8 @@ import style from './TodoListTask.module.css';
 class TodoListTask extends React.Component {
     state = {
         editMode: false,
-        title: this.props.title
+        title: this.props.title,
+        tasks: this.props.tasks
     };
 
     titleInputRef = React.createRef();
@@ -19,13 +20,14 @@ class TodoListTask extends React.Component {
     onEditClick = () => {
         this.setState({ editMode: true });
     };
-
     onTitleChanged = (e) => {
         this.setState({ title: e.currentTarget.value });
     };
+    onDeleteTask = () => {
+        this.props.deleteTask(this.props.taskId)
+    }
 
     render = () => {
-
         return (
             <div className={style.todolistTask}>
                 <div className={style.dataTask}>
@@ -42,7 +44,7 @@ class TodoListTask extends React.Component {
                 <div className={style.buttonTask}>
                     {this.state.editMode && <button onClick={this.onSaveClick}>save</button>}
                     {!this.state.editMode && <button onClick={this.onEditClick}>edit</button>}
-                    <button onClick={() => { this.props.deleteTask(this.props.taskId) }}>x</button>
+                    <button onClick={this.onDeleteTask}>x</button>
                 </div>
             </div>
         );
